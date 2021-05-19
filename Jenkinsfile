@@ -9,22 +9,12 @@ pipeline {
   stages {
 
     
- 
-    stage('Build Spring Image') {
-      steps {
-        script {
-           latestDockerSpringImage = docker.build(env.registryBack)
-         }
-      }
-    }
-
-    stage('Deploy Spring Image') {
+  
+    stage('Pull image ') {
       steps {
         script {
 
-          docker.withRegistry('https://registry.hub.docker.com', env.registryCredential) {
-			latestDockerSpringImage.push("$BUILD_NUMBER")
-			latestDockerSpringImage.push('latest')          }
+       sh ' docker pull dhikrah/spring-docker-project:latest'
         }
       }
     }
