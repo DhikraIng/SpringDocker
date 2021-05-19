@@ -10,12 +10,29 @@ pipeline {
 
     
   
+        stage ('Hello Test stage') {
+            agent any
+
+            steps {
+                echo 'Hello, '
+
+                sh '''#!/bin/bash
+
+                    echo "Hello from bash"
+                    echo "Who I'm $SHELL"
+                '''
+            }
+        }
     stage('Pull image ') {
       steps {
         script {
-		sh '''#!/bin/bash
-                docker pull dhikrah/spring-docker-project:latest
-         '''
+		echo 'Hellosss, '
+
+                sh '''#!/bin/bash
+docker pull dhikrah/spring-docker-project:latest
+                '''
+		 
+       
        
         }
       }
