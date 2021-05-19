@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    registryBack = "dhikrahouissa/spring-docker-project"
+    registryBack = "dhikrah/spring-docker-project"
     registryCredential = 'docker-hub'
     customDockerSpringImage = '' 
     latestDockerSpringImage = ''
@@ -12,11 +12,7 @@ pipeline {
   }
   stages {
 
-    stage('Clone repository') {
-      steps {
-        checkout scm
-      }
-    }
+    
 
     stage('Show commit author') {
       steps {
