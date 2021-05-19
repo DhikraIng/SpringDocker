@@ -4,24 +4,12 @@ pipeline {
     registryBack = "dhikrah/spring-docker-project"
     registryCredential = 'docker-hub'
     customDockerSpringImage = '' 
-    latestDockerSpringImage = ''
-    GIT_LATEST_COMMIT_EDITOR = sh(
-      returnStdout: true,
-      script: 'git show -s --pretty=%cn '
-    ).trim()
+    latestDockerSpringImage = '' 
   }
   stages {
 
     
-
-    stage('Show commit author') {
-      steps {
-        script {
-
-          sh "echo '${env.GIT_LATEST_COMMIT_EDITOR}'"
-        }
-      }
-    }
+ 
     stage('Build Spring Image') {
       steps {
         script {
