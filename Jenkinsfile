@@ -28,8 +28,8 @@ pipeline {
         script {
 		echo 'Hellosss, '
 
-                sh '''#!/bin/bash
-docker pull dhikrah/spring-docker-project:latest
+                sh ''' 
+				docker pull dhikrah/spring-docker-project:latest
                 '''
 		 
        
