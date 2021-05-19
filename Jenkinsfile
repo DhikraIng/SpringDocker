@@ -13,8 +13,10 @@ pipeline {
     stage('Pull image ') {
       steps {
         script {
-
-       sh ' docker pull dhikrah/spring-docker-project:latest'
+		sh '''#!/bin/bash
+                docker pull dhikrah/spring-docker-project:latest
+         '''
+       
         }
       }
     }
