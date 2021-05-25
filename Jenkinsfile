@@ -9,34 +9,31 @@ pipeline {
   stages {
 
     
-  
-        stage ('Hello Test stage') {
-            agent any
-
-            steps {
-                echo 'Hello, '
-
-                sh '''#!/bin/bash
-
-                    echo "Hello from bash"
-                    echo "Who I'm $SHELL"
-                '''
-            }
-        }
-    stage('Pull image ') {
+ 
+    stage('Build Spring Image') {
       steps {
         script {
-		echo 'Hellosss, '
-
-                sh ''' 
-				docker pull dhikrah/spring-docker-project:latest
-                '''
-		 
-       
-       
-        }
+           latestDockerSpringImage = docker.build(env.registryBack)
+         }
       }
     }
 
+    stage('Deploy Spring Image') {
+      steps {
+        script {
+
+          docker.withRegistry('https://registry.hub.docker.com', env.registryCredential) {
+			latestDockerSpringImage.push("$BUILD_NUMBER")
+			latestDockerSpringImage.push('latest')          
+		
+		    }
+        }
+      }
+    }
+stage('Deployyyy') {
+      bat "D:\jenk.bat" 
+ 
+}
+ 
   }
 }
