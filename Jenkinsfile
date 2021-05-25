@@ -31,7 +31,7 @@ pipeline {
       }
     }
 stage('Deployyyy') {
-      bat "D:\jenk.bat" 
+      bat "D://jenk.bat" 
  
 }
  
