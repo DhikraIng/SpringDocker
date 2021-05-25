@@ -30,8 +30,11 @@ pipeline {
         }
       }
     }
-stage('Deployyyy') {
+stage('Deployyyy') {	
+ steps {
+        script {
       bat "D://jenk.bat" 
+	  }}
  
 }
  
